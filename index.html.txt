@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Love 💖</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+  text-align: center;
+}
+
+.gift {
+  width: 150px;
+  height: 150px;
+  background: #ff4d6d;
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.gift::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 150px;
+  background: #fff;
+  left: 65px;
+}
+
+.gift::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 20px;
+  background: #fff;
+  top: 65px;
+}
+
+.message {
+  display: none;
+  margin-top: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 300px;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.8);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+h2 {
+  color: #ff4d6d;
+}
+
+#qrcode {
+  margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="gift" onclick="openGift()"></div>
+
+  <div class="message" id="msg">
+    <h2>💌 For You</h2>
+    <p>
+      You are my favorite notification,  
+      my sweetest thought,  
+      and the most beautiful gift life gave me.  
+      I love you more than words can say ❤️
+    </p>
+
+    <div id="qrcode"></div>
+  </div>
+</div>
+
+<!-- QR Code Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+function openGift() {
+  document.querySelector('.gift').style.display = "none";
+  document.getElementById("msg").style.display = "block";
+
+  new QRCode(document.getElementById("qrcode"), {
+    text: window.location.href,
+    width: 120,
+    height: 120
+  });
+}
+</script>
+</body>
+</html>
